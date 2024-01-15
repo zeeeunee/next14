@@ -5,8 +5,19 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	gap: 50px;
 
 	h1 {
 		font-size: 1.5rem;
+	}
+	.btnMenu {
+		display: none;
+	}
+}
+@media (max-width: $tablet) {
+	.header {
+		.btnMenu {
+			display: flex;
+		}
 	}
 }
