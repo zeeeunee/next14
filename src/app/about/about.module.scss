@@ -1,0 +1,15 @@
+//@import '@/styles/variables.scss';
+
+.about {
+	h1 {
+		font-size: 2rem;
+		color: #333;
+	}
+}
+@media (max-width: $tablet) {
+	.about {
+		h1 {
+			color: hotpink;
+		}
+	}
+}
