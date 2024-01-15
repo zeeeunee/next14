@@ -13,11 +13,6 @@ import { useEffect, useState } from 'react';
 export default function Navbar({ textArr }) {
 	const time = new Date().getTime();
 	const pathName = usePathname();
-	const [client, setClient] = useState(false);
-
-	useEffect(() => {
-		setClient(true);
-	}, []);
 
 	return (
 		// <nav className={clsx(styles.navbar)}>
@@ -32,7 +27,7 @@ export default function Navbar({ textArr }) {
 		// 	</Link>
 		// </nav>
 		<nav className={clsx(styles.navbar)}>
-			<h2>{client && time}</h2>
+			<h2>{time}</h2>
 			{/* client가 true일때에만 동작 */}
 
 			{textArr.map(txt => (
