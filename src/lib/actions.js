@@ -7,7 +7,7 @@ export const getPosts = async id => {
 		connectDB();
 		let posts = null;
 		if (id) {
-			posts = await Post.findById(id);
+			posts = await Post.findById(id); //id값이 있으면 id값이 있는 데이터 가져오기
 		} else {
 			posts = await Post.find();
 		}
