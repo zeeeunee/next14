@@ -38,7 +38,7 @@ export function useCustomText(type) {
 		return (txt, spc = ' ') => {
 			const resultText = txt
 				.split(/-|_|\+/)
-				.map(data => toUpperText(data))
+				.map(data => data.charAt(0).toUpperCase() + data.slice(1))
 				.join(spc);
 			return resultText;
 		};
