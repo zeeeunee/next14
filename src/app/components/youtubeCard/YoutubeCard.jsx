@@ -11,7 +11,7 @@ export default function YoutubeCard({ data, isPriority, isPrefetch }) {
 	return (
 		<article className={clsx(styles.youtubeCard)}>
 			<div className={styles.pic}>
-				<Link href={`/detail/${data.id}`} prefetch={isPrefetch}>
+				<Link href={`/youtube/${data.id}`} prefetch={isPrefetch}>
 					<Image
 						src={data.snippet.thumbnails.standard.url}
 						alt={data.snippet.title}
