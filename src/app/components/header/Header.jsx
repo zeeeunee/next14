@@ -3,7 +3,7 @@ import styles from './header.module.scss';
 import Link from 'next/link';
 import Navbar from '../navbar/Navbar';
 import BtnLogin from '../btnLogin/BtnLogin';
-import { TiThMenu } from 'react-icons/ti';
+import BtnMenuToggle from '../btnMenuToggle/BtnMenuToggle';
 
 export default function Header() {
 	console.log('header');
@@ -15,7 +15,7 @@ export default function Header() {
 
 			<Navbar textArr={['about', 'youtube', 'post']} />
 			<BtnLogin session={false} />
-			<TiThMenu className={styles.btnMenu} size={20} color={'#333'} />
+			<BtnMenuToggle />
 		</header>
 	);
 }
