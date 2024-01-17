@@ -3,7 +3,7 @@ import styles from './post.module.scss';
 import { getPostsPage } from '@/lib/actions';
 import Image from 'next/image';
 import Link from 'next/link';
-import Pagination from '@/components/pagination/Pagination';
+import Pagination from '../components/pagination/Pagination';
 
 export default async function Post({ searchParams }) {
 	//현재 페이지에 전달된 query이 있으면 page의 값을 가져옴, 없으면 1로 초기화
