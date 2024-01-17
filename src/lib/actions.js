@@ -9,7 +9,7 @@ export const getPosts = async id => {
 		connectDB();
 		let posts = null;
 		if (id) posts = await Post.findById(id); //id값이 있으면 id값이 있는 데이터 가져오기
-		else posts = await Post.find();
+		else posts = await Post.find().sort({ _id: -1 }); //최신등록된 데이터가 맨 앞으로 가게 하기 (역순배열)
 
 		return posts;
 	} catch (err) {
@@ -31,6 +31,11 @@ export const addPost = async formData => {
 		throw new Error('Fail to save Post!');
 	}
 
-	revalidatePath('/post'); //post로 새로고침
+	revalidatePath('/post'); //새로고침 하지 않아도 post에서 데이터 업데이트 확인 가능
 	redirect('/post'); //브라우저에게 post로 가라고 지시하는 것
+};
+
+export const deletePost = async formData => {
+	'use server';
+	console.log(formData);
 };

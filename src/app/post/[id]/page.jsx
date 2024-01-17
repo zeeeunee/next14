@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import styles from './postDetail.module.scss';
-import { getPosts } from '@/lib/actions';
+import { deletePost, getPosts } from '@/lib/actions';
 import Image from 'next/image';
 
 export default async function PostDetail({ params }) {
@@ -15,6 +15,12 @@ export default async function PostDetail({ params }) {
 				<div className={clsx(styles.txt)}>
 					<h2>{post.title}</h2>
 					<p>{post.desc}</p>
+					<form action={deletePost}>
+						<nav>
+							<input type='hidden' name={id} />
+							<button>Delete</button>
+						</nav>
+					</form>
 				</div>
 			</article>
 		</section>
