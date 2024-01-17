@@ -1,5 +1,7 @@
+import { revalidatePath } from 'next/cache';
 import { connectDB } from './connectDB';
 import { Post } from './models';
+import { redirect } from 'next/navigation';
 
 export const getPosts = async id => {
 	try {
@@ -28,4 +30,7 @@ export const addPost = async formData => {
 		console.log(err);
 		throw new Error('Fail to save Post!');
 	}
+
+	revalidatePath('/post'); //post로 새로고침
+	redirect('/post'); //브라우저에게 다른 URL로 요청하도록 지시하는 것
 };
