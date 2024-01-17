@@ -8,11 +8,11 @@ export default async function Edit({ params }) {
 	return (
 		<section className={clsx(styles.edit)}>
 			<h1>edit</h1>
-			<form>
-				<input type='hidden' name={id} />
-				<input type='text' name='title' value={data.title} />
-				<input type='text' name='img' value={data.img || ''} />
-				<textarea name='desc' cols='30' rows='3' value={data.desc}></textarea>
+			<form action={updatePost}>
+				<input type='hidden' name='id' value={id} />
+				<input type='text' name='title' defaultValue={data.title} />
+				<input type='text' name='img' defaultValue={data.img || ''} />
+				<textarea name='desc' cols='30' rows='3' defaultValue={data.desc}></textarea>
 
 				<nav>
 					<input type='reset' value='cancel' />
