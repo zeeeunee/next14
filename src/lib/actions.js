@@ -32,5 +32,5 @@ export const addPost = async formData => {
 	}
 
 	revalidatePath('/post'); //post로 새로고침
-	redirect('/post'); //브라우저에게 다른 URL로 요청하도록 지시하는 것
+	redirect('/post'); //브라우저에게 post로 가라고 지시하는 것
 };
