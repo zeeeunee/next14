@@ -25,19 +25,19 @@ export default function Pagination({ total, nums }) {
 	return (
 		<nav className={clsx(styles.pagination)}>
 			{isPrev && <button onClick={() => changePage('prev')}>prev</button>}
+
+			{/* 전체 포스트 갯수대비 현재 페이지에 보일 갯수를 나눠서 전체 페이지버튼 갯수로 버튼 생성 */}
+			{Array(total % nums === 0 ? parseInt(total / nums) : parseInt(total / nums) + 1)
+				.fill()
+				.map((_, idx) => {
+					return (
+						<Link key={idx} href={`/post?page=${idx + 1}`} className={clsx(idx + 1 === parseInt(page) ? styles.on : '')}>
+							{idx + 1}
+						</Link>
+					);
+				})}
+
 			{isNext && <button onClick={() => changePage('next')}>next</button>}
-			<div>
-				{/* 전체 포스트 갯수대비 현재 페이지에 보일 갯수를 나눠서 전체 페이지버튼 갯수로 버튼 생성 */}
-				{Array(total % nums === 0 ? parseInt(total / nums) : parseInt(total / nums) + 1)
-					.fill()
-					.map((_, idx) => {
-						return (
-							<Link key={idx} href={`/post?page=${idx + 1}`} className={clsx(idx + 1 === parseInt(page) ? styles.on : '')}>
-								{idx + 1}
-							</Link>
-						);
-					})}
-			</div>
 		</nav>
 	);
 }
