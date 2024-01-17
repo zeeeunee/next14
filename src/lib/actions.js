@@ -37,5 +37,20 @@ export const addPost = async formData => {
 
 export const deletePost = async formData => {
 	'use server';
-	console.log(formData);
+
+	try {
+		connectDB();
+		const data = Object.fromEntries(formData);
+		//const id = { _id: Object.keys(data)[0] };
+		const id = Object.keys(data)[0];
+
+		//findByAndDelete(id); id:삭제할 document의 _id의 value값 전달 (객체전달 아님)
+		await Post.findByIdAndDelete(id);
+	} catch (err) {
+		console.log(err);
+		throw new Error('Fail to delete Post');
+	}
+
+	revalidatePath('/post');
+	redirect('/post');
 };
