@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import styles from './edit.module.scss';
-import { getPosts } from '@/lib/actions';
+import { getPosts, updatePost } from '@/lib/actions';
 
 export default async function Edit({ params }) {
 	const { id } = params;
