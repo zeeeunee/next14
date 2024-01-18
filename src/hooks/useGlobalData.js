@@ -7,10 +7,12 @@ export const GlobalContext = createContext();
 
 export function GlobalProvider({ children }) {
 	const [MenuOpen, setMenuOpen] = useState(false);
-	const [ModalOpen, setModalOpen] = useState(false);
-	const [Mode, setMode] = useState(false);
+	const [ImgPanelOpen, setImgPanelOpen] = useState(false);
+	const [ImgUrl, setImgUrl] = useState('');
 
-	return <GlobalContext.Provider value={{ MenuOpen, setMenuOpen, ModalOpen, setModalOpen, Mode, setMode }}>{children}</GlobalContext.Provider>;
+	return (
+		<GlobalContext.Provider value={{ MenuOpen, setMenuOpen, ImgPanelOpen, setImgPanelOpen, ImgUrl, setImgUrl }}>{children}</GlobalContext.Provider>
+	);
 }
 
 export function useGlobalData() {
