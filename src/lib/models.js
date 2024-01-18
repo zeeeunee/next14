@@ -17,7 +17,18 @@ const postSchema = new mongoose.Schema(
 	{ timestamps: true }
 );
 
+const userSchema = new mongoose.Schema(
+	{
+		username: { type: String, required: true },
+		email: { type: String, required: true },
+		password: { type: String },
+		img: { type: String }
+	},
+	{ timestamps: true }
+);
+
 export const Post = mongoose.models.Post || mongoose.model('Post', postSchema);
+export const User = mongoose.models.User || mongoose.model('User', userSchema);
 
 /*
 	DB 종류
