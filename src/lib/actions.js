@@ -6,6 +6,7 @@ import { revalidatePath } from 'next/cache';
 import { connectDB } from './connectDB';
 import { Post, User } from './models';
 import { redirect } from 'next/navigation';
+import bcrypt from 'bcryptjs';
 
 export const getPosts = async id => {
 	try {
@@ -96,12 +97,16 @@ export const updatePost = async formData => {
 
 //User 관련 actions
 export const addUser = async formData => {
-	const { username, email, password, repassword } = Object.fromEntries(formData);
-
+	const { username, email, img, password, repassword } = Object.fromEntries(formData);
+	//npm i bcryptjs 비밀번호 암호화입력
 	if (password !== repassword) return;
+
+	const salt = await bcrypt.genSalt(10);
+	const hashedPassword = await bcrypt.hash(password, salt);
+
 	try {
 		connectDB();
-		const newUser = new User({ username, email, password, repassword });
+		const newUser = new User({ username, email, img, password: hashedPassword });
 		await newUser.save();
 	} catch (err) {
 		console.log(err);
