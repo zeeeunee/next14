@@ -23,6 +23,8 @@ export default function InputImage({ data }) {
 				//삼항연산자의 조건을 data가 아닌 ImgUrl을 쓰는 이유
 				//ImgUrl은 있을 수도 있고 없을 수도 있는 값이지만 (글쓰기모드, 수정모드)
 				//data같은 경우는 수정모드 일 때 무조건 있는 값이기 때문에 ImgUrl을 쓸 수 조차 없음
+				//data?를 붙인이유 : 글작성모드일때는 data자체가 없으므로 구문에러를 피하기 위함
+				//data?.img || ''를 쓴 이유 : 수정모드일때 data모델객체 안에 title,desc는 있지만 img에는 값이 없을 수도 있기 떄문
 				value={ImgUrl ? ImgUrl : data?.img || ''}
 				name='img'
 				onChange={e => setImgUrl(e.target.value)}
