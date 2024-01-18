@@ -14,7 +14,7 @@
     "mongoose": "^8.0.4",
     "moongoose": "^0.0.5",
     "next": "14.0.4",
-    "next-auth": "^4.24.5",
+    "next-auth": "^5.0.0-beta.3",
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^5.0.1",
