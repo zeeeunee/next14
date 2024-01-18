@@ -32,3 +32,14 @@ export default function InputImage({ data }) {
 		</>
 	);
 }
+
+/*
+	추천 Fickr 이미지 URL등록 로직 흐름
+	1. image URL이 담길 전역 state추가 (useGlobalData.js)
+	2. InputImage컴포넌트생성 (이미지URL등록할 input요소,  FlickrPanel호출버튼, FlickrPanel 컴포넌트)
+	3. FlickrPanel호출 버튼 클릭시 --> FlickrPanel 호출
+	4. FLickrPanel컴포넌트 마운트시 flickt data fetching후 썸네일 출력
+	5. 출력된 썸네일에 클릭 이벤트 발생시 해당 img URL를 전역 state에 담아줌
+	6. 부모컴포넌트 InputImage의 input요소에는 전역 state에 의해서 클릭한 Flickr 썸네일 이미지 url전달
+	7. 상위 부모인 Page Write , Page Edit컴포넌트에서 action이벤트 발생시 전달된 imgURL값을 Post Model에 저장
+*/

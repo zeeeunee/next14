@@ -12,7 +12,7 @@ export default function Flickr() {
 
 	useEffect(() => {
 		const fetchFlickr = async () => {
-			const num = 18;
+			const num = 21;
 			const flickr_api = process.env.NEXT_PUBLIC_FLICKR_API;
 			const baseURL = `https://www.flickr.com/services/rest/?&api_key=${flickr_api}&per_page=${num}&format=json&nojsoncallback=1&method=`;
 			const method_interest = 'flickr.interestingness.getList';

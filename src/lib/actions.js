@@ -21,7 +21,7 @@ export const getPosts = async id => {
 //인수로 받은 현재 페이지번호에 따라 다음의 정보를 반환하는 함수
 //{전체 데이터갯수, 출력될 포스트 배열, 현재페이지에 보일 데이터 갯수}
 export const getPostsPage = async page => {
-	const nums = 3;
+	const nums = 6;
 
 	try {
 		connectDB();
