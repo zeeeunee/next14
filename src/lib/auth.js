@@ -5,6 +5,7 @@ import { connectDB } from './connectDB';
 import { User } from './models';
 import bcrypt from 'bcryptjs';
 import { authConfig } from './auth.config';
+import Google from 'next-auth/providers/google';
 //로그인정보 DB정보에서 찾아서 인증 함수
 const checkUserDB = async credentials => {
 	try {
@@ -43,30 +44,35 @@ export const {
 		Github({
 			clientId: process.env.GITHUB_ID,
 			clientSecret: process.env.GITHUB_SECRET
+		}),
+		//google 인증 Provider설정
+		Google({
+			clientId: process.env.GOOGLE_CLIENT_ID || '',
+			clientSecret: process.env.GOOGLE_CLIENT_SECRET || ''
 		})
 	],
 	//인증이 성공완료된 자동 실행될 callback함수(외부 autoConfig에서 가져옴)
 	callbacks: {
 		async signIn({ user, account, profile }) {
 			if (account.provider === 'github') {
-				console.log(account);
 				connectDB();
 				try {
 					const user = await User.findOne({ email: profile.email });
-
 					if (!user) {
 						const newUser = new User({
 							username: profile.login,
 							email: profile.email,
 							img: profile.avatar_url
 						});
-
 						await newUser.save();
 					}
 				} catch (err) {
 					console.log(err);
 					return false;
 				}
+			}
+			if (account.provider === 'google') {
+				console.log('google', account);
 			}
 			return true;
 		},
