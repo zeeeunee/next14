@@ -123,7 +123,7 @@ export const handleLogin = async (prevState, formData) => {
 	}
 };
 //깃허브 로그인 서버액션 함수
-export const handleGithubLogin = async () => {
+export const handleGitHubLogin = async () => {
 	await signIn('github');
 };
 
