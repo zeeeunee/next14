@@ -7,6 +7,7 @@ import { auth } from '@/lib/auth';
 
 export default async function Write() {
 	const session = await auth();
+	console.log('write', session.user.email);
 
 	return (
 		<>
@@ -14,7 +15,7 @@ export default async function Write() {
 				<h1>Write Post</h1>
 
 				<form action={addPost}>
-					<input type='hidden' name='username' value={session.user.name} />
+					<input type='hidden' name='email' defaultValue={session.user.email} />
 					<input type='text' placeholder='title' name='title' />
 					<InputImage />
 					<textarea name='desc' cols='30' rows='3' placeholder='description'></textarea>
