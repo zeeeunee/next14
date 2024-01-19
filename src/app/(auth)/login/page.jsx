@@ -1,7 +1,8 @@
 import clsx from 'clsx';
 import styles from './login.module.scss';
-import LoginForm from '@/app/components/loginForm/LoginForm';
+
 import { handleGitHubLogin, handleGoogleLogin } from '@/lib/actions';
+import LoginForm from '@/components/loginForm/LoginForm';
 
 export default function Login() {
 	return (

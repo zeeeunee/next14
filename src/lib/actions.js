@@ -32,11 +32,14 @@ export const getPostsPage = async page => {
 		throw new Error('Fail to fetch All posts data!!');
 	}
 };
+
 export const addPost = async formData => {
-	const { title, img, desc } = Object.fromEntries(formData);
+	const { title, img, desc, username } = Object.fromEntries(formData);
+
 	try {
 		connectDB();
-		const newPost = new Post({ title, img, desc });
+		const newPost = new Post({ title, img, desc, username });
+		console.log('addPost', newPost);
 		await newPost.save();
 	} catch (err) {
 		console.log(err);
@@ -74,22 +77,27 @@ export const updatePost = async formData => {
 	redirect('/post');
 };
 
-//User 데이터 추가 서버액션 함수
+export const getUser = async username => {
+	try {
+		connectDB();
+		const user = await User.findOne({ username: username });
+		return user;
+	} catch (err) {
+		console.log(err);
+		throw new Error('Fail to fetch User Info!');
+	}
+};
+
 export const addUser = async (previousState, formData) => {
 	const { username, email, password, img, repassword } = Object.fromEntries(formData);
 
-	if (password !== repassword) {
-		return { error: 'Passwords do not match' };
-	}
+	if (password !== repassword) return { error: 'Passwords do not match' };
 	try {
 		connectDB();
 		const user = await User.findOne({ username });
-		if (user) {
-			return { error: 'Username already exists' };
-		}
+		if (user) return { error: 'Username already exists' };
 		const salt = await bcrypt.genSalt(10);
 		const hashedPassword = await bcrypt.hash(password, salt);
-
 		const newUser = new User({
 			username,
 			email,
@@ -104,8 +112,6 @@ export const addUser = async (previousState, formData) => {
 		return { error: 'Something went wrong!' };
 	}
 };
-
-//로그인 서버액션 함수
 export const handleLogin = async (prevState, formData) => {
 	console.log('handleLogin');
 	const { username, password } = Object.fromEntries(formData);
@@ -123,17 +129,12 @@ export const handleLogin = async (prevState, formData) => {
 		throw err;
 	}
 };
-//깃허브 로그인 서버액션 함수
 export const handleGitHubLogin = async () => {
 	await signIn('github');
 };
-
-//구글 로그인 서버액션 함수
 export const handleGoogleLogin = async () => {
 	await signIn('google');
 };
-
-//로그아웃 서버액션 함수
 export const handleLogout = async () => {
 	'use server';
 	await signOut();

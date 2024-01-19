@@ -3,7 +3,7 @@ import styles from './post.module.scss';
 import { getPostsPage } from '@/lib/actions';
 import Image from 'next/image';
 import Link from 'next/link';
-import Pagination from '../components/pagination/Pagination';
+import Pagination from '@/components/pagination/Pagination';
 
 export default async function Post({ searchParams }) {
 	const session = await auth();

@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import styles from './youtube.module.scss';
-import YoutubeCard from '../components/youtubeCard/YoutubeCard';
+import YoutubeCard from '@/components/youtubeCard/YoutubeCard';
 
 async function fetchYoutube() {
 	const api_key = process.env.NEXT_PUBLIC_YOUTUBE_API;

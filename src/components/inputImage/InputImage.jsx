@@ -1,8 +1,9 @@
 'use client';
 
 import { useGlobalData } from '@/hooks/useGlobalData';
-import Flickr from '../flickr/Flickr';
+
 import { useEffect } from 'react';
+import Flickr from '../flickr/Flickr';
 
 export default function InputImage({ data }) {
 	const { ImgUrl, setImgUrl, setImgPanelOpen } = useGlobalData();

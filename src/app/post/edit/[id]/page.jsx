@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import styles from './edit.module.scss';
 import { getPosts, updatePost } from '@/lib/actions';
-import InputImage from '@/app/components/inputImage/InputImage';
+import InputImage from '@/components/inputImage/InputImage';
 
 export default async function Edit({ params }) {
 	const { id } = params;

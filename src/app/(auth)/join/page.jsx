@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import styles from './join.module.scss';
-import JoinMembers from '@/app/components/joinMembers/JoinMembers';
+import JoinMembers from '@/components/joinMembers/JoinMembers';
 
 export default function Join() {
 	return (
