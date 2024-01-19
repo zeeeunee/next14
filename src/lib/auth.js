@@ -8,13 +8,10 @@ import { authConfig } from './auth.config';
 const checkUserDB = async credentials => {
 	try {
 		connectDB();
-
 		const user = await User.findOne({ username: credentials.username });
 		if (!user) throw new Error('there is no username yout input in DB!!');
-
 		const isPasswordCorrect = await bcrypt.compare(credentials.password, user.password);
 		if (!isPasswordCorrect) throw new Error('now matched password from DB!');
-
 		return user;
 	} catch (err) {
 		console.log(err);
@@ -40,6 +37,11 @@ export const {
 					return null;
 				}
 			}
+		}),
+		//github 인증 Provider설정
+		Github({
+			clientId: process.env.GITHUB_ID,
+			clientSecret: process.env.GITHUB_SECRET
 		})
 	],
 	//인증이 성공완료된 자동 실행될 callback함수(외부 autoConfig에서 가져옴)
