@@ -106,6 +106,7 @@ export const addUser = async formData => {
 		connectDB();
 		const newUser = new User({ username, email, img, password: hashedPassword });
 		await newUser.save();
+
 		revalidatePath('/');
 		redirect('/');
 		return { success: true };
