@@ -4,17 +4,16 @@ import { connectDB } from './connectDB';
 import { User } from './models';
 import bcrypt from 'bcryptjs';
 import { authConfig } from './auth.config';
-
 //로그인정보 DB정보에서 찾아서 인증 함수
 const checkUserDB = async credentials => {
 	try {
 		connectDB();
 
 		const user = await User.findOne({ username: credentials.username });
-		if (!user) throw new Error('Wrong credentials!');
+		if (!user) throw new Error('there is no username yout input in DB!!');
 
 		const isPasswordCorrect = await bcrypt.compare(credentials.password, user.password);
-		if (!isPasswordCorrect) throw new Error('Wrong credentials!');
+		if (!isPasswordCorrect) throw new Error('now matched password from DB!');
 
 		return user;
 	} catch (err) {
