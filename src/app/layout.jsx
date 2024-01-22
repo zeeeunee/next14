@@ -1,6 +1,6 @@
 import { Inter } from 'next/font/google';
 import '@/styles/globals.scss';
-
+import '@uploadthing/react/styles.css';
 import { GlobalProvider } from '@/hooks/useGlobalData';
 import MobileMenu from '@/components/mobileMenu/MobileMenu';
 import Header from '@/components/header/Header';
