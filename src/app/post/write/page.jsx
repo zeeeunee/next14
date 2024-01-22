@@ -6,8 +6,6 @@ import InputImage from '@/components/inputImage/InputImage';
 import ImageUploader from '@/components/uploadImage/UploadImage';
 import { auth } from '@/lib/auth';
 
-import styles from './write.module.scss';
-
 export default async function Write() {
 	const session = await auth();
 	console.log('write', session.user.email);
