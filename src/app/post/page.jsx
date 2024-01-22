@@ -4,6 +4,7 @@ import { getPostsPage } from '@/lib/actions';
 import Image from 'next/image';
 import Link from 'next/link';
 import Pagination from '@/components/pagination/Pagination';
+import { auth } from '@/lib/auth';
 
 export default async function Post({ searchParams }) {
 	const session = await auth();
