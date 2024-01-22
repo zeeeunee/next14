@@ -54,15 +54,20 @@ export const {
 					const user = await User.findOne({ username: profile.login });
 
 					if (!user) {
-						const newUser = new User({
+						let tempUser = {
 							username: profile.login,
 							email: profile.email,
 							img: profile.avatar_url
-						});
+						};
+
+						if (profile.email === 'wldmstv@gmail.com') {
+							tempUser = { ...tempUser, owner: true };
+						}
+						const newUser = new User(tempUser);
+
 						await newUser.save();
 					}
 				} catch (err) {
-					console.log(err);
 					return false;
 				}
 			}
