@@ -1,5 +1,4 @@
 import clsx from 'clsx';
-import styles from './write.module.scss';
 import { addPost } from '@/lib/actions';
 import InputImage from '@/components/inputImage/InputImage';
 import { auth } from '@/lib/auth';
