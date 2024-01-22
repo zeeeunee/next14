@@ -1,14 +1,12 @@
 import clsx from 'clsx';
 import styles from './write.module.scss';
 import { addPost } from '@/lib/actions';
-import Flickr from '@/components/flickr/Flickr';
 import InputImage from '@/components/inputImage/InputImage';
-import ImageUploader from '@/components/uploadImage/UploadImage';
 import { auth } from '@/lib/auth';
+import ImageUploader from '@/components/uploadImage/UploadImage';
 
 export default async function Write() {
 	const session = await auth();
-	console.log('write', session.user.email);
 
 	return (
 		<>
@@ -21,13 +19,13 @@ export default async function Write() {
 					<InputImage />
 					<ImageUploader />
 					<textarea name='desc' cols='30' rows='3' placeholder='description'></textarea>
+
 					<nav>
 						<input type='reset' value='cancel' />
 						<input type='submit' value='write' />
 					</nav>
 				</form>
 			</section>
-			<Flickr />
 		</>
 	);
 }
